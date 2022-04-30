@@ -11,6 +11,7 @@ const config = {
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
     "plugin:eslint-comments/recommended",
+    "plugin:sonarjs/recommended",
   ],
   plugins: ["html"],
   parserOptions: {
