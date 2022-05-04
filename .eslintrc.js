@@ -12,7 +12,7 @@ module.exports = {
     "plugin:eslint-comments/recommended",
     "plugin:sonarjs/recommended",
   ],
-  plugins: ["html", "sonarjs"],
+  plugins: ["html"],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
