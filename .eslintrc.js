@@ -1,4 +1,4 @@
-const config = {
+module.exports = {
   root: true,
   env: {
     es2022: true,
@@ -179,22 +179,13 @@ const config = {
       },
     },
     {
-      files: ["./*.config.*"],
+      files: ["*.js", "*.cjs"],
       env: {
         amd: true,
       },
       rules: {
         "unicorn/prefer-module": "off",
-        "@typescript-eslint/no-var-requires": "warn",
-      },
-    },
-    {
-      files: [".eslintrc.js"],
-      env: {
-        amd: true,
-      },
-      rules: {
-        "unicorn/prefer-module": "off",
+        // "@typescript-eslint/no-var-requires": "warn",
       },
     },
     {
@@ -203,5 +194,3 @@ const config = {
     },
   ],
 };
-
-module.exports = config;
