@@ -2,8 +2,7 @@ module.exports = {
   root: true,
   env: {
     es2022: true,
-    node: true,
-    browser: true,
+    "shared-node-browser": true,
   },
   extends: [
     "eslint:recommended",
@@ -13,7 +12,7 @@ module.exports = {
     "plugin:eslint-comments/recommended",
     "plugin:sonarjs/recommended",
   ],
-  plugins: ["html"],
+  plugins: ["html", "sonarjs"],
   parserOptions: {
     ecmaVersion: "latest",
     sourceType: "module",
@@ -181,7 +180,7 @@ module.exports = {
     {
       files: ["*.js", "*.cjs"],
       env: {
-        amd: true,
+        node: true,
       },
       rules: {
         "unicorn/prefer-module": "off",
