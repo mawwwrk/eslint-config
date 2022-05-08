@@ -1,4 +1,5 @@
 htpasswd
+*/storage/data/*
 .verdaccio-db.json
 
 # Logs

@@ -72,6 +72,9 @@ packages:
   "@localpkg/*":
     access: $all
     publish: $anonymous
+  "*-config-morks":
+    access: $all
+    publish: $anonymous
   "@*/*":
     # scoped packages
     access: $all
