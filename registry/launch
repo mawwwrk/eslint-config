@@ -1,0 +1,32 @@
+#!/usr/bin/env zsh
+#shellcheck shell=bash
+
+v_path="$(readlink -f "$(dirname "$0")")"
+
+curl_config_file() {
+
+    [[ -d $v_path/conf ]] || mkdir -p "$v_path"/conf
+
+    curl https://raw.githubusercontent.com/verdaccio/verdaccio/5.x/conf/docker.yaml |
+        sed -nE -e "$(
+            cat <<SED
+            /^[[:blank:]]*(#|[[:blank:]]*$)/d;
+            s/authenticated/anonymous/ ;p
+SED
+        )" >"$v_path"/conf/config.yaml
+
+}
+
+launch_verdaccio_docker() {
+
+    docker run -it --rm --name verdaccio \
+        -p 4873:4873 \
+        -v "$v_path"/conf:/verdaccio/conf \
+        -v "$v_path"/storage:/verdaccio/storage \
+        -v "$v_path"/plugins:/verdaccio/plugins \
+        -d verdaccio/verdaccio
+}
+
+launch_verdaccio_docker
+
+unset v_path
