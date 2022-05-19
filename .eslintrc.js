@@ -6,11 +6,14 @@ module.exports = {
   },
   extends: [
     "eslint:recommended",
+    "plugin:n/recommended",
+    "plugin:jsdoc/recommended",
     "plugin:import/recommended",
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
     "plugin:eslint-comments/recommended",
     "plugin:sonarjs/recommended",
+    "plugin:no-unsanitized/DOM",
   ],
   plugins: ["html"],
   parserOptions: {
@@ -70,7 +73,11 @@ module.exports = {
           version: "^27.0.0",
         },
       },
-      extends: ["plugin:jest/recommended", "plugin:jest/style"],
+      extends: [
+        "plugin:jest/recommended",
+        "plugin:jest/style",
+        "plugin:testing-library/dom",
+      ],
     },
     {
       files: ["*.{test,spec}.[jt]sx"],
@@ -124,11 +131,6 @@ module.exports = {
     {
       files: ["*.json{,c,5}"],
       extends: ["plugin:jsonc/recommended-with-jsonc"],
-      rules: {
-        "comma-dangle": ["error", "never"],
-        "quote-props": ["error", "always"],
-        quotes: ["error", "double"],
-      },
     },
     {
       files: ["*.yaml", "*.yml"],
@@ -136,7 +138,6 @@ module.exports = {
     },
     {
       files: ["package.json"],
-      parser: "jsonc-eslint-parser",
       rules: {
         "jsonc/sort-keys": [
           "error",
@@ -187,6 +188,8 @@ module.exports = {
         // "@typescript-eslint/no-var-requires": "warn",
       },
     },
+    // NOTE: Testing out activation of recommended jsdoc rules for all files, even ts for now.
+    // { files: ["*.{,m,c}js"], extends: ["plugin:jsdoc/recommended"], },
     {
       files: ["*"],
       extends: ["prettier"],
