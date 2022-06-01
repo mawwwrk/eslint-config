@@ -2,6 +2,8 @@ htpasswd
 */storage/data/*
 .verdaccio-db.json
 
+# generic node .ignore list
+
 # Logs
 logs
 *.log

@@ -57,6 +57,7 @@ module.exports = {
       "error",
       {
         argsIgnorePattern: "^_",
+        varsIgnorePattern: "^_$",
         caughtErrors: "none",
       },
     ],
@@ -103,7 +104,11 @@ module.exports = {
       extends: [
         "plugin:import/typescript",
         "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
       ],
+      parserOptions: {
+        project: "./tsconfig.json",
+      },
       rules: {
         "@typescript-eslint/consistent-type-imports": [
           "error",
@@ -116,6 +121,7 @@ module.exports = {
           "error",
           {
             argsIgnorePattern: "^_",
+            varsIgnorePattern: "^_$",
             caughtErrors: "none",
           },
         ],
@@ -126,6 +132,14 @@ module.exports = {
             allowTernary: true,
           },
         ],
+        "@typescript-eslint/no-var-requires": "warn",
+        "n/no-unsupported-features/es-syntax": [
+          "error",
+          {
+            ignores: ["modules"],
+          },
+        ],
+        "unicorn/prefer-module": "warn",
       },
     },
     {
